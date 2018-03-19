@@ -1,5 +1,5 @@
 self.addEventListener('install', function (event) {
-  // Perform install steps
+// Perform install steps
 }); var CACHE_NAME = 'restaurant-cache';
 var urlsToCache = [
   './',
@@ -23,7 +23,7 @@ var urlsToCache = [
 ];
 
 self.addEventListener('install', function (event) {
-  // Perform install steps
+// Perform install steps
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(function (cache) {
