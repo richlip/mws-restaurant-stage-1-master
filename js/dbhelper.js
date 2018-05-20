@@ -47,20 +47,30 @@ static openDatabase(){
    * Fetch all restaurants.
    */
   static fetchRestaurants(callback) {
-    let xhr = new XMLHttpRequest();
-    xhr.open('GET', DBHelper.DATABASE_URL);
-    xhr.onload = () => {
-      if (xhr.status === 200) { // Got a success response from server!
-        const json = JSON.parse(xhr.responseText);
-        const restaurants = json.restaurants;
-        callback(null, restaurants);
-      } else { // Oops!. Got an error from server.
-        const error = (`Request failed. Returned status of ${xhr.status}`);
-        callback(error, null);
-      }
-    };
-    xhr.send();
+     DBHelper.getCachedMessages().then(function(data){
+      // if we have data to show then we pass it immediately.
+      if(data.length > 0){
+        return callback(null , data);
   }
+
+   /**
+   * After caching
+   * update the cache with new restaurants
+   **/ 
+      fetch(DBHelper.DATABASE_URL , {credentials:'same-origin'})
+      .then(res => {
+        console.log('res fetched is: ', res);
+        return res.json()})
+      .then(data => {
+        dbPromise.then(function(db){
+          if(!db) return db;
+          console.log('data fetched is: ', data);
+
+
+          var tx = db.transaction('restaurants' , 'readwrite');
+          var store = tx.objectStore('restaurants');
+
+          data.forEach(restaurant => store.put(restaurant));
 
   /**
    * Fetch a restaurant by its ID.
@@ -199,3 +209,4 @@ static openDatabase(){
   }
 
 }
+module.exports = DBHelper;
