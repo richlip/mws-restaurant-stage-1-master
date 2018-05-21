@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<html>
 <head>
 <meta charset='utf-8'>
   <meta http-equiv='X-UA-Compatible' content='IE=edge'>
@@ -9,11 +9,11 @@
   <link href="css/styles.css" rel="stylesheet" type="text/css">
   <script type="application/javascript" charset="utf-8" src="js/dbhelper.js"></script>
   <script type="application/javascript" charset="utf-8" src="js/main.js"></script>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_xTwEzV3VWlQ3eagupTcrVpaXI84pC6w&libraries=places&callback=initMap"></script>
+ <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqO14x2K62xXut9MUql1savyawBES43ao&libraries=places&callback=initMap"></script>
   <title>Restaurant Reviews</title>
 </head>
 
-<!--body/-->
+<!--body-->
 <!--Header-->
 <body>
   <header>
@@ -22,7 +22,7 @@
     </nav>
   </header>
 
-<!--main/-->
+<!--main-->
   <main id="maincontent" role="main">
     <section id="map-container">
       <div id="map" role="application"></div>
@@ -40,6 +40,25 @@
       <ul id="restaurants-list"></ul>
     </section>
   </main>
+
+  <script type="text/javascript">
+// SHOW Map
+var mapHidden = true;
+var showRestaurantsMap = () => {
+  const gmap = document.getElementById('map');
+  const showMapButton = document.getElementById('showMapButton');
+  mapHidden = !mapHidden;
+  if (!mapHidden) {
+    console.log("show map");
+    gmap.style.display = "block"
+    showMapButton.innerHTML = "Hide Map"
+  } else {
+    console.log("hide map");
+    gmap.style.display = "none"
+    showMapButton.innerHTML = "Show Map"
+  }
+}
+</script>
 
   <!--script/-->
  

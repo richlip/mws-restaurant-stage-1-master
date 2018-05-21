@@ -21,7 +21,7 @@ static openDatabase(){
    * Change this to restaurants.json file location on your server.
    */
   static get DATABASE_URL() {
-    const port = 8000 // Change this to your server port
+    const port = 1337 // Change this to your server port
     return `http://localhost:${port}/data/restaurants.json`;
   }
 
@@ -71,6 +71,24 @@ static openDatabase(){
           var store = tx.objectStore('restaurants');
 
           data.forEach(restaurant => store.put(restaurant));
+
+    // limit the data for 30
+        store.openCursor(null , 'prev').then(function(cursor){
+            return cursor.advance(30);
+          })
+          .then(function deleteRest(cursor){
+            if(!cursor) return;
+            cursor.delete();
+            return cursor.continue().then(deleteRest);
+          });
+        });
+        return callback(null,data);
+      })
+      .catch(err => {
+        return callback(err , null)
+      });
+    });
+  }
 
   /**
    * Fetch a restaurant by its ID.
@@ -191,7 +209,7 @@ static openDatabase(){
    * Restaurant image URL.
    */
   static imageUrlForRestaurant(restaurant) {
-    return (`/img/${restaurant.photograph}`);
+    return (`/img/${restaurant.photograph}.jpg`);
   }
 
   /**
