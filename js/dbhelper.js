@@ -8,7 +8,7 @@ class DBHelper {
    * Change this to restaurants.json file location on your server.
    */
   static get DATABASE_URL() {
-    const port = 1337 // Change this to your server port
+    const port = 8000 // Change this to your server port
     return `http://localhost:${port}/data/restaurants.json`;
   }
 
@@ -51,6 +51,7 @@ class DBHelper {
 
           data.forEach(restaurant => store.put(restaurant));
 
+<<<<<<< HEAD
     // limit the data for 30
         store.openCursor(null , 'prev').then(function(cursor){
             return cursor.advance(30);
@@ -71,6 +72,8 @@ class DBHelper {
 
 =======
 >>>>>>> parent of 4e19dd0... added handling
+=======
+>>>>>>> parent of 857e260... changes
   /**
    * Fetch a restaurant by its ID.
    */
@@ -190,7 +193,7 @@ class DBHelper {
    * Restaurant image URL.
    */
   static imageUrlForRestaurant(restaurant) {
-    return (`/img/${restaurant.photograph}.jpg`);
+    return (`/img/${restaurant.photograph}`);
   }
 
   /**
