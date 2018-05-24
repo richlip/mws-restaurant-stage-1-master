@@ -52,6 +52,7 @@ class DBHelper {
           data.forEach(restaurant => store.put(restaurant));
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // limit the data for 30
         store.openCursor(null , 'prev').then(function(cursor){
             return cursor.advance(30);
@@ -72,6 +73,8 @@ class DBHelper {
 
 =======
 >>>>>>> parent of 4e19dd0... added handling
+=======
+>>>>>>> parent of 857e260... changes
 =======
 >>>>>>> parent of 857e260... changes
   /**
