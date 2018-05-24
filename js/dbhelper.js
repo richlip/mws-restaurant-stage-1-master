@@ -1,20 +1,7 @@
-import idb from 'idb';
-
 /**
  * Common database helper functions.
  */
-var dbPromise;
 class DBHelper {
-
-/**
-* open an IDB Database
-**/
-static openDatabase(){
-  return idb.open('restaurants' , 1  , function(upgradeDb) {
-  upgradeDb.createObjectStore('restaurants' ,{keyPath: 'id'});
-  });
-}
-
 
   /**
    * Database URL.
@@ -23,24 +10,6 @@ static openDatabase(){
   static get DATABASE_URL() {
     const port = 1337 // Change this to your server port
     return `http://localhost:${port}/data/restaurants.json`;
-  }
-
-/**
-*show cached restaurants from IDB
-**/
-  static getCachedMessages(){
-    dbPromise = DBHelper.openDatabase();
-    return dbPromise.then(function(db){
-
-      //if we showing posts or very first time of the page loading.
-      //we don't need to go to idb
-      if(!db) return;
-
-      var tx = db.transaction('restaurants');
-      var store = tx.objectStore('restaurants');
-
-      return store.getAll();
-    });
   }
 
   /**
