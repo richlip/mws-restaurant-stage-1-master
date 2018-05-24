@@ -7,9 +7,6 @@
   <meta name=viewport content="width=device-width, initial-scale=1">
   <link src="//normalize-css.googlecode.com/svn/trunk/normalize.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet" type="text/css">
-  <script type="application/javascript" charset="utf-8" src="js/dbhelper.js"></script>
-  <script type="application/javascript" charset="utf-8" src="js/main.js"></script>
- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqO14x2K62xXut9MUql1savyawBES43ao&libraries=places&callback=initMap"></script>
   <title>Restaurant Reviews</title>
 </head>
 
@@ -41,24 +38,11 @@
     </section>
   </main>
 
-  <script type="text/javascript">
-// SHOW Map
-var mapHidden = true;
-var showRestaurantsMap = () => {
-  const gmap = document.getElementById('map');
-  const showMapButton = document.getElementById('showMapButton');
-  mapHidden = !mapHidden;
-  if (!mapHidden) {
-    console.log("show map");
-    gmap.style.display = "block"
-    showMapButton.innerHTML = "Hide Map"
-  } else {
-    console.log("hide map");
-    gmap.style.display = "none"
-    showMapButton.innerHTML = "Show Map"
-  }
-}
-</script>
+  <script type="application/javascript" charset="utf-8" src="js/dbhelper.js"></script>
+  <script type="application/javascript" charset="utf-8" src="js/main.js"></script>
+ <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqO14x2K62xXut9MUql1savyawBES43ao&libraries=places&callback=initMap" async defer></script>
+
+
 
   <!--script/-->
  

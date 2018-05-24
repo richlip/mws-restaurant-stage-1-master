@@ -16,12 +16,22 @@ class DBHelper {
    * Fetch all restaurants.
    */
   static fetchRestaurants(callback) {
-     DBHelper.getCachedMessages().then(function(data){
-      // if we have data to show then we pass it immediately.
-      if(data.length > 0){
-        return callback(null , data);
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', DBHelper.DATABASE_URL);
+    xhr.onload = () => {
+      if (xhr.status === 200) { // Got a success response from server!
+        const json = JSON.parse(xhr.responseText);
+        const restaurants = json.restaurants;
+        callback(null, restaurants);
+      } else { // Oops!. Got an error from server.
+        const error = (`Request failed. Returned status of ${xhr.status}`);
+        callback(error, null);
+      }
+    };
+    xhr.send();
   }
 
+<<<<<<< HEAD
    /**
    * After caching
    * update the cache with new restaurants
@@ -59,6 +69,8 @@ class DBHelper {
     });
   }
 
+=======
+>>>>>>> parent of 4e19dd0... added handling
   /**
    * Fetch a restaurant by its ID.
    */
@@ -196,4 +208,3 @@ class DBHelper {
   }
 
 }
-module.exports = DBHelper;
