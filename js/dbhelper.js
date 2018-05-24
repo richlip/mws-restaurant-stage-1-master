@@ -31,52 +31,6 @@ class DBHelper {
     xhr.send();
   }
 
-<<<<<<< HEAD
-   /**
-   * After caching
-   * update the cache with new restaurants
-   **/ 
-      fetch(DBHelper.DATABASE_URL , {credentials:'same-origin'})
-      .then(res => {
-        console.log('res fetched is: ', res);
-        return res.json()})
-      .then(data => {
-        dbPromise.then(function(db){
-          if(!db) return db;
-          console.log('data fetched is: ', data);
-
-
-          var tx = db.transaction('restaurants' , 'readwrite');
-          var store = tx.objectStore('restaurants');
-
-          data.forEach(restaurant => store.put(restaurant));
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-    // limit the data for 30
-        store.openCursor(null , 'prev').then(function(cursor){
-            return cursor.advance(30);
-          })
-          .then(function deleteRest(cursor){
-            if(!cursor) return;
-            cursor.delete();
-            return cursor.continue().then(deleteRest);
-          });
-        });
-        return callback(null,data);
-      })
-      .catch(err => {
-        return callback(err , null)
-      });
-    });
-  }
-
-=======
->>>>>>> parent of 4e19dd0... added handling
-=======
->>>>>>> parent of 857e260... changes
-=======
->>>>>>> parent of 857e260... changes
   /**
    * Fetch a restaurant by its ID.
    */
