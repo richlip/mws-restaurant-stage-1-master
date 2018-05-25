@@ -5,12 +5,12 @@
   <meta charset='utf-8'>
   <meta http-equiv='X-UA-Compatible' content='IE=edge'>
   <meta name=viewport content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#892124"/>
+  <link rel="manifest" href="manifest.json">
   <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
   <link rel="stylesheet" href="css/styles.css" type="text/css">
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_xTwEzV3VWlQ3eagupTcrVpaXI84pC6w&libraries=places&callback=initMap"></script>
-  <script type="text/javascript" src="js/dbhelper.js"></script>
-  <script type="text/javascript" src="js/restaurant_info.js"></script>
-  <title>Restaurant Info</title>
+
+   <title>Restaurant Info</title>
 </head>
 
 <body class="inside">
@@ -21,16 +21,16 @@
       <h1><a href="/" aria-label="Restaurant Reviews">Restaurant Reviews</a></h1>
     </nav>
     <!-- Beginning breadcrumb -->
-    <ul id="breadcrumb" role="navigation">
+    <ul id="breadcrumb" role="navigation" aria-label="Breadcrumb">
       <li><a href="/" aria-label="Home">Home</a></li>
     </ul>
    </header>
 
   <!-- Beginning main -->
-  <main id="maincontent">
+  <main id="maincontent" role="main">
     <!-- Beginning map -->
     <section id="map-container">
-      <div id="map" role="application"></div>
+      <div id="map" role="application" aria-hidden="true" aria-describedby="map-help"></div>
     </section>
 
     <!-- Beginning restaurant -->
@@ -60,6 +60,11 @@
       });
     }
 </script>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_xTwEzV3VWlQ3eagupTcrVpaXI84pC6w&libraries=places&callback=initMap"></script>
+<script type="text/javascript" src="js/dbhelper.js"></script>
+<script type="text/javascript" src="js/restaurant_info.js"></script>
+<script type="application/javascript" charset="utf-8" src="node_modules/idb/lib/idb.js"></script>
 
   <!-- Beginning footer -->
   <footer id="footer">
