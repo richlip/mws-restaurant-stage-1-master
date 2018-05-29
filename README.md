@@ -13,13 +13,20 @@ This project at stage 2 consists of 2 folders, you have to download, the first o
 ### What do I do from here?
 1. Change to the other folder with ther server:
 Let's start with running commands in your terminal, known as command line interface (CLI)
+
 Install project dependancies
+
 **# npm i**
 Install Sails.js globally
+
 **# npm i sails -g**
+
 Start the server
+
 **# node server**
+
 You should now have access to your API server environment
+
 debug: Environment : development debug: Port : 1337
 
 2. In this folder, start up a simple HTTP server to serve up the site files on your local computer. Python has some simple tools to do this, and you don't even need to know Python. For most people, it's already installed on your computer.
