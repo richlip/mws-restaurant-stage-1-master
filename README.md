@@ -17,6 +17,7 @@ Let's start with running commands in your terminal, known as command line interf
 Install project dependancies
 
 **# npm i**
+
 Install Sails.js globally
 
 **# npm i sails -g**
