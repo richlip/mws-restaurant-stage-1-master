@@ -37,6 +37,6 @@ In a terminal, check the version of Python you have: `python -V`. If you have Py
 3. With your server running, visit the site: `http://localhost:8000`, and look around for a bit to see what the current experience looks like.
 
 
-### Note about ES6
+### Note from the coder
 
 Some notes from myself, i used an older laptop to work with, screen was too small for programming... If you find and error, send it to me;-)
