@@ -11,7 +11,9 @@
               './js/main.js',
               './js/restaurant_info.js',
               './node_modules/idb/lib/idb.js',
-              './img/',
+              './sw.js',
+              './manifest.json',
+              './img/'
              ]);
          })
      );
@@ -66,4 +68,4 @@ self.addEventListener('install', function (event) {
      if (event.data.action === 'skipWaiting') {
         self.skipWaiting();
      }
-   })
+   });
