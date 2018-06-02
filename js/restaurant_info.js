@@ -58,16 +58,16 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
 
   const address = document.getElementById('restaurant-address');
   address.innerHTML = restaurant.address;
-  address.tabIndex = '0'; 
+  address.tabIndex = '0';
 
   const image = document.getElementById('restaurant-img');
   image.className = 'restaurant-img'
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
-  image.alt = 'This is a picture of the restaurant called 'restaurant.name;
+  image.alt = 'A picture of the ' + restaurant.name + ' Restaurant';
 
   const cuisine = document.getElementById('restaurant-cuisine');
   cuisine.innerHTML = restaurant.cuisine_type;
-  cuisine.tabIndex = '0'; 
+  cuisine.tabIndex = '0';
 
   // fill operating hours
   if (restaurant.operating_hours) {
@@ -113,7 +113,7 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
   if (!reviews) {
     const noReviews = document.createElement('p');
     noReviews.innerHTML = 'No reviews yet!';
-    noReviews.tabIndex = '0';    
+    noReviews.tabIndex = '0';
     container.appendChild(noReviews);
     return;
   }
@@ -131,18 +131,22 @@ createReviewHTML = (review) => {
   const li = document.createElement('li');
   const name = document.createElement('p');
   name.innerHTML = review.name;
+  name.tabIndex = '0';
   li.appendChild(name);
 
   const date = document.createElement('p');
   date.innerHTML = review.date;
+  date.tabIndex = '0';
   li.appendChild(date);
 
   const rating = document.createElement('p');
   rating.innerHTML = `Rating: ${review.rating}`;
+  rating.tabIndex = '0';
   li.appendChild(rating);
 
   const comments = document.createElement('p');
   comments.innerHTML = review.comments;
+  comments.tabIndex = '0';
   li.appendChild(comments);
 
   return li;
