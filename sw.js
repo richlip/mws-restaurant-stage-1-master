@@ -13,11 +13,13 @@
               './node_modules/idb/lib/idb.js',
               './sw.js',
               './manifest.json',
-              './img/'
+              './img/',
+              './favicon.ico'
              ]);
          })
      );
  });
+
 
 self.addEventListener('install', function (event) {
 // Perform install steps
@@ -68,4 +70,4 @@ self.addEventListener('install', function (event) {
      if (event.data.action === 'skipWaiting') {
         self.skipWaiting();
      }
-   });
+   })

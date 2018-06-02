@@ -4,64 +4,16 @@ let restaurants,
 var map;
 var markers = [];
 
-
-// if (!navigator.serviceWorker) return;
- navigator.serviceWorker.register('./sw.js').then(function(reg) {
-   console.log('Yeah, Service worker registered.');
- 
-   if (!navigator.serviceWorker.controller) {
-     return;
-   }
- 
-   if (reg.waiting) {
-     navigator.serviceWorker.controller.postMessage({action: 'skipWaiting'});
-   }
- 
-   if (reg.installing) {
-     navigator.serviceWorker.addEventListener('statechange', function() {
-       if (navigator.serviceWorker.controller.state == 'installed') {
-         navigator.serviceWorker.controller.postMessage({action: 'skipWaiting'});
-       }
-     });
-   }
- 
-   reg.addEventListener('updatefound', function() {
-     navigator.serviceWorker.addEventListener('statechange', function() {
-       if (navigator.serviceWorker.controller.state == 'installed') {
-         navigator.serviceWorker.controller.postMessage({action: 'skipWaiting'});
-       }
-     });
-   });
- 
- }).catch(function() {
-   console.log('Oh no, Service worker registration failed');
- });  
- 
- var refreshing;
- navigator.serviceWorker.addEventListener('controllerchange', function() {
-   if (refreshing) return;
-   window.location.reload();
-   refreshing = true;
- });
-
 /**
- * Fetch neighborhoods and cuisines as soon as the page is loaded.
+ * Initialize ServiceWorker
+ * and fetch neighborhoods and cuisines when 
+ * page is loaded.
  */
 document.addEventListener('DOMContentLoaded', (event) => {
-  getRestaurantsFromIDB();
+  DBHelper.startServiceWorker();
   fetchNeighborhoods();
   fetchCuisines();
 });
-
-/**
- * Get initial restaurants from IndexedDB
- */
-getRestaurantsFromIDB = () => {
-  DBHelper.getRestaurantsfromIDB((error, restaurants) => {
-    self.restaurants = restaurants;
-    fillRestaurantsHTML();
-  }) 
-}
 
 /**
  * Fetch all neighborhoods and set their HTML.
@@ -131,7 +83,6 @@ window.initMap = () => {
     center: loc,
     scrollwheel: false
   });
-
   updateRestaurants();
 };
 
@@ -177,24 +128,23 @@ resetRestaurants = (restaurants) => {
  * Create all restaurants HTML and add them to the webpage.
  */
 fillRestaurantsHTML = (restaurants = self.restaurants) => {
-  let tabIndex = 0;
   const ul = document.getElementById('restaurants-list');
   restaurants.forEach(restaurant => {
-    ul.append(createRestaurantHTML(restaurant, tabIndex));
+    ul.append(this.createRestaurantHTML(restaurant));
   });
-  addMarkersToMap();
+  this.addMarkersToMap();
 };
 
 /**
  * Create restaurant HTML.
  */
-createRestaurantHTML = (restaurant, tabIndex) => {
+createRestaurantHTML = (restaurant) => {
   const li = document.createElement('li');
 
   const image = document.createElement('img');
   image.className = 'restaurant-img';
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
-  image.alt = restaurant.name + ' Main Image';
+  image.alt = 'This is a picture of ' + restaurant.name + ' Restaurant';
   li.append(image);
 
   const name = document.createElement('h2');
@@ -211,8 +161,6 @@ createRestaurantHTML = (restaurant, tabIndex) => {
 
   const more = document.createElement('a');
   more.innerHTML = 'View Details';
-  more.setAttribute('tabindex', tabIndex.toString());
-  more.setAttribute('aria-label', 'View Details for ' + restaurant.name);
   more.href = DBHelper.urlForRestaurant(restaurant);
   li.append(more);
 
@@ -229,6 +177,6 @@ addMarkersToMap = (restaurants = self.restaurants) => {
     google.maps.event.addListener(marker, 'click', () => {
       window.location.href = marker.url;
     });
-    self.markers.push(marker);
+    markers.push(marker);
   });
 };
