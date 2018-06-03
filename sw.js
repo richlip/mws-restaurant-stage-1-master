@@ -21,7 +21,7 @@
  });
 
 
-self.addEventListener('install', function (event) {
+self.addEventListener('activate', function (event) {
 // Perform install steps
   event.waitUntil(
     caches.keys().then(function(cacheNames) {
@@ -36,38 +36,38 @@ self.addEventListener('install', function (event) {
      );
  });
  
- self.addEventListener('fetch', function(event){
+ self.addEventListener('fetch', (event) => {
      // console.log(event.request);
      event.respondWith(
-         caches.match(event.request).then(function(response) {
-                   if (response) return response;
-           return fetch(event.request)
+         caches.match(event.request).then(response => {
             if (response) {
                 console.log('Found ', event.request.url, ' in cache');
                 return response;
             }
             console.log('Network request for ', event.request.url);
-            return fetch(event.request).then(function(response) {
-                if (response.status === 404) {
-                    console.log(response.status);
+            return fetch(event.request).then(networkResponse => {
+                if (networkResponse.status === 404) {
+                    console.log(networkResponse.status);
                     return;
                 }
-                return caches.open(staticCacheName).then(function(cache) {
-                    return response;
+                return caches.open(staticCacheName).then(cache => {
+                    cache.put(event.request.url, networkResponse.clone());
+                    console.log('We have fetched and cached', event.request.url);
+                    return networkResponse;
                 })
             })
-        }).catch(function(error) {
+        }).catch(error => {
             console.log('Error, ', error);
             return;
          })
      );
  });
 
-  self.addEventListener('message', function(event) {
+  self.addEventListener('message', (event) => {
     console.log(event);
     
     // var messages = JSON.parse(event.data);
      if (event.data.action === 'skipWaiting') {
         self.skipWaiting();
      }
-   })
+   });
