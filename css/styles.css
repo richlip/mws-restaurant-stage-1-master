@@ -330,3 +330,31 @@ nav h1 a {
     flex-direction: row-reverse;
   }
 }
+
+#reviews-list li p:nth-child(1), #reviewForm p:nth-child(1) {
+  padding: 5px;
+  color: black;
+  width: calc(100% - 140px);
+}
+#reviews-list li p:nth-child(2), #reviewForm p:nth-child(2) {
+  padding: 5px;
+  color: black;
+  width: 120px;
+}
+#reviews-list li p:nth-child(3), #reviewForm p:nth-child(3) {
+  color: black;
+  padding: 4px;
+  margin-left: 5px;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+#reviews-list li p:nth-child(4), #reviewForm p:nth-child(4) {
+  margin: 0 5px 10px 5px;
+  width: 100%;
+}
+#reviewForm p:nth-child(4) textarea {
+  width: calc(100% - 5px);
+}
+#reviewForm p:nth-child(5) {
+  margin-left: 5px;
+}
