@@ -1,5 +1,5 @@
 navigator.serviceWorker.register('./sw.js').then(function (reg) {
-    console.log('Service worker registered.');
+    console.log('yepp, Service worker is registered...');
 
     if (!navigator.serviceWorker.controller) {
         return;
@@ -26,7 +26,7 @@ navigator.serviceWorker.register('./sw.js').then(function (reg) {
     });
 
 }).catch(function () {
-    console.log('Service worker registration failed');
+    console.log('Oh no, Service worker registration failed');
 });
 
 var refreshing;
@@ -36,7 +36,19 @@ navigator.serviceWorker.addEventListener('controllerchange', function () {
     refreshing = true;
 })
 
-// Request a one-off sync:
+// Syncing
 navigator.serviceWorker.ready.then(function (swRegistration) {    
     return swRegistration.sync.register('myFirstSync');
 });
+
+function onOnline() {
+    console.log('online');
+    DBHelper.submitOfflineReviews();
+}
+
+function onOffline() {
+    console.log('offline');
+}
+
+window.addEventListener('online', onOnline);
+window.addEventListener('offline', onOffline);
