@@ -1,17 +1,17 @@
 # Mobile Web Specialist Certification Course
 ---
-#### Part two of the 3 stage course
+#### Part three of the 3 stage course
 
-## Project Overview: Stage 2
+## Project Overview: Stage 3
 
-The project aim of the **Restaurant Reviews** project in **Stage One** was to make a site responsive. Now in stage **Stage two**, the aim is to make the site offline usable.
+The project aim of the **Restaurant Reviews** project in **Stage One** was to make a site responsive. In stage **Stage two**, the aim was to make the site offline usable. **Stage three** is different, as there is a different api server and you have to prepare the site, that users can leave a review, even offline.
 
 ### Specification
 
-This project at stage 2 consists of 2 folders, you have to download, the first one is this folder with the html code of the website. The second folder, you have to doenload, is the api server, you can find here:  `https://github.com/richlip/mws-restaurant-stage-2-master`.
+This project at stage 3 consists of 2 folders, you have to download, the first one is this folder with the html code of the website. The second folder, you have to download, is the enriched api server, you can find here:  `https://github.com/richlip/mws-restaurant-stage-3-master`.
 
 ### What do I do from here?
-1. Change to the other folder with ther server:
+1. Change to the other folder with the server:
 Let's start with running commands in your terminal, known as command line interface (CLI)
 
 Install project dependancies
@@ -36,7 +36,17 @@ In a terminal, check the version of Python you have: `python -V`. If you have Py
 
 3. With your server running, visit the site: `http://localhost:8000`, and look around for a bit to see what the current experience looks like.
 
+4. On the Restaurant Detail page, you can leave a review for the Restaurant.
+
 
 ### Note from the coder
 
-Some notes from myself, i used an older laptop to work with, screen was too small for programming... If you find and error, send it to me;-)
+Some notes from myself, i used an older laptop to work with, screen was too small for programming... If you find and error, keep it;-).
+
+The layout of the Restaurant detailsite is not finnished, as i wanted to implement a button to open the review container. will be done soon.
+
+Another note from me, there is a audit to make (lighthouse), in the optionssection, uncheck the clear storage checkbox, as one statement from lighthouse is, to cache the pictures, so with a cleared storage, the page have to load the pics from the server.
+
+Last note, In one section of lighthouse (responsive), i do not reach 90 (points), as my localhost have not https, what lighthouse recommends.
+
+Very last note! I am so happy, that you read until here, as i am happy, to mostly finnish the project;-)
