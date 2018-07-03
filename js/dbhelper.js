@@ -79,9 +79,9 @@ class DBHelper {
                 callback(error, null);
             } else {
                 const restaurant = restaurants.find(r => r.id == id);
-                if (restaurant) { // Got the Restaurant
+                if (restaurant) {
                     callback(null, restaurant);
-                } else { // Restaurant does not exist in the Database
+                } else {
                     callback('Restaurant does not exist', null);
                 }
             }
