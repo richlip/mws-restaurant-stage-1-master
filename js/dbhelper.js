@@ -238,18 +238,18 @@ class DBHelper {
 
     /**
      * Start ServiceWorker
-     *
-     *  static startServiceWorker() {
-     *    if ('serviceWorker' in navigator) {
-     *      navigator.serviceWorker.register('sw.js')
-     *        .then((reg) => {
-     *          console.log('Yeah, we made it!. Scope is ' + reg.scope);
-     *        }).catch((error) => {
-     *          console.log('Oh no, we are f..ked, registration failed with ' + error);
-     *        });
-     *    }
-     *  }
      */
+    static startServiceWorker() {
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js')
+                .then((reg) => {
+                    console.log('Yeah, we made it!. Scope is ' + reg.scope);
+                }).catch((error) => {
+                    console.log('Oh no, we are f..ked, registration failed with ' + error);
+                });
+        }
+    }
+
 
     static submitReview(data) {
         console.log(data);
