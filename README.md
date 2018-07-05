@@ -47,6 +47,8 @@ The layout of the Restaurant detailsite is not finnished, as i wanted to impleme
 
 Another note from me, the map is shown on click, that's faster to load...
 
-Last note, In one section of lighthouse (responsive), i do not reach 90 (points), as my localhost have not https, what lighthouse recommends.
+Last note, lighthouse, ther is an image in the root calles "lighthouse". This is the actual screenshot, after i finished my work.
+
+I used chrome canary as browser
 
 Very last note! I am so happy, that you read until here, as i am happy, to mostly finnish the project;-)
