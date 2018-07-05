@@ -23,13 +23,13 @@ window.initMap = () => {
         }
     });
 }
-  const toggle_map = () => {
-        if (document.getElementById('map').style.display === 'none')
-          document.getElementById('map').style.display = 'block'
-        else
-          document.getElementById('map').style.display = 'none'
-    
-      }
+const toggle_map = () => {
+    if (document.getElementById('map').style.display === 'none')
+        document.getElementById('map').style.display = 'block'
+    else
+        document.getElementById('map').style.display = 'none'
+
+}
 
 /**
  * Get current restaurant from page URL.
@@ -63,6 +63,12 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
     const name = document.getElementById('restaurant-name');
     name.innerHTML = restaurant.name;
     name.tabIndex = '0';
+
+    const favCheck = document.getElementById('favorite');
+    favCheck.checked = restaurant.is_favorite;
+    favCheck.addEventListener('change', event => {
+        DBHelper.toggleFavorite(restaurant, event.target.checked);
+    });
 
     const address = document.getElementById('restaurant-address');
     address.innerHTML = restaurant.address;

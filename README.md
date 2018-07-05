@@ -4,7 +4,7 @@
 
 ## Project Overview: Stage 3
 
-The project aim of the **Restaurant Reviews** project in **Stage One** was to make a site responsive. In stage **Stage two**, the aim was to make the site offline usable. **Stage three** is different, as there is a different api server and you have to prepare the site, that users can leave a review, even offline.
+The project aim of the **Restaurant Reviews** project in **Stage One** was to make a site responsive. In stage **Stage two**, the aim was to make the site offline usable. **Stage three** is different, as there is a different api server and you have to prepare the site, that users can leave a review, even offline and mark their favorite restaurant..
 
 ### Specification
 
@@ -45,7 +45,7 @@ Some notes from myself, i used an older laptop to work with, screen was too smal
 
 The layout of the Restaurant detailsite is not finnished, as i wanted to implement a button to open the review container. will be done soon.
 
-Another note from me, there is a audit to make (lighthouse), in the optionssection, uncheck the clear storage checkbox, as one statement from lighthouse is, to cache the pictures, so with a cleared storage, the page have to load the pics from the server.
+Another note from me, the map is shown on click, that's faster to load...
 
 Last note, In one section of lighthouse (responsive), i do not reach 90 (points), as my localhost have not https, what lighthouse recommends.
 
